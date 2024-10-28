@@ -82,11 +82,13 @@ def compute_metrics(logits1, logits2):
 
 iree_logits = np.load('/home/xidaren2/xshortfin/goldens/iree_run/prefill_outputs/logits.npy')
 shark_logits = np.load('/home/xidaren2/xshortfin/goldens/sharktank/prefill_outputs/logits.npy')
+seq_lens = np.load('/home/xidaren2/xshortfin/goldens/iree_run/prefill_inputs/seq_lens.npy')
+seq_len = seq_lens[0]
 
-# Compare last position
+# Compare at sequence length position
 (top_1_diff, num_diff_top_k, iree_top, shark_top, 
  mean_diff, max_diff, ce_iree_to_shark, ce_shark_to_iree, symmetric_ce) = compute_metrics(
-    iree_logits[0, -1, :], shark_logits[0, -1, :]
+    iree_logits[0, seq_len - 1, :], shark_logits[0, seq_len - 1, :]
 )
 
 print(f'Prefill comparison:')
