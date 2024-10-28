@@ -5,7 +5,11 @@
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #BS="1,4"
-BS="4"
+BS="1,4"
+
+# Create logs directory
+LOGDIR="export_and_serve_logs"
+mkdir -p $LOGDIR
 
 echo "Exporting with batch size $BS"
 set -xeuo pipefail
@@ -14,8 +18,6 @@ WD=/tmp/export_and_serve
 rm -rf $WD
 
 pkill -9 -f "python -m shortfin_apps.llm.server" || true
-
-
 
 mkdir -p $WD
 
@@ -64,21 +66,21 @@ EOF
 
 echo "Serving with batch size $BS"
 
-# Start the server in the background and save its PID
+# Start the server in the background and redirect output to log file
 python -m shortfin_apps.llm.server \
   --tokenizer=$WD/tokenizer.json \
   --model_config=$WD/edited_config.json \
   --vmfb=$WD/model.vmfb \
   --parameters=$WD/open-llama-3b-v2-f16.gguf \
-  --device=hip &
+  --device=hip > "$LOGDIR/server.log" 2>&1 &
 
 SERVER_PID=$!
 
 # Wait a bit for the server to start up
 sleep 5
 
-# Run the client
-python ~/SHARK-Platform/shortfin/python/shortfin_apps/llm/client.py
+# Run the client and redirect output to log file
+python ~/SHARK-Platform/shortfin/python/shortfin_apps/llm/client.py > "$LOGDIR/client.log" 2>&1
 
 # Kill the server
 kill $SERVER_PID

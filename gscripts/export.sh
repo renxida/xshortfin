@@ -17,6 +17,9 @@ mkdir -p $WD
 
 huggingface-cli download --local-dir $WD SlyEcho/open_llama_3b_v2_gguf open-llama-3b-v2-f16.gguf
 
+# save an irpa copy
+python -m sharktank.tools.dump_gguf --gguf-file $WD/open-llama-3b-v2-f16.gguf --save $WD/open-llama-3b-v2-f16.irpa
+
 HUGGING_FACE_TOKENIZER="openlm-research/open_llama_3b_v2"
 
 python - <<EOF

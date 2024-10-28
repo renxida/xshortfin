@@ -1,0 +1,80 @@
+=== Starting Shortfin Run ===
+=== Running Prefill ===
+
+=== PREFILL COMPARISON ===
+Shapes - Shortfin: (1, 1, 32000), Golden: (1, 16, 32000)
+Comparing logits - Shortfin slice shape: (32000,), Golden slice shape: (32000,)
+Prefill comparison:
+Top-1 token different: True (Shortfin: 0, Golden: 29570)
+Number of different tokens in top-10: 20
+Logits mean relative difference: 76.97%
+Logits max relative difference: 137.85%
+Cross entropy (Shortfin→Golden): 14.517676
+Cross entropy (Golden→Shortfin): 23.692566
+Symmetric cross entropy: 19.105122
+
+=== Running Decode ===
+
+=== DECODE COMPARISON ===
+Shapes - Shortfin: (1, 1, 32000), Golden: (1, 1, 32000)
+Comparing logits - Shortfin slice shape: (32000,), Golden slice shape: (32000,)
+Decode comparison:
+Top-1 token different: True (Shortfin: 353, Golden: 29500)
+Number of different tokens in top-10: 14
+Logits mean relative difference: 88.80%
+Logits max relative difference: 96.10%
+Cross entropy (Shortfin→Golden): 7.013744
+Cross entropy (Golden→Shortfin): 15.434132
+Symmetric cross entropy: 11.223938
+
+=== Execution Complete ===
+nanobind: leaked 21 instances!
+ - leaked instance 0x79736d318a48 of type "_shortfin_default.lib.local.ProgramFunction"
+ - leaked instance 0x79738190ec28 of type "_shortfin_default.lib.local.Program"
+ - leaked instance 0x79736fd359b8 of type "_shortfin_default.lib.array.device_array"
+ - leaked instance 0x79736fdf23e8 of type "shortfin_apps.llm.components.service.BatcherProcess"
+ - leaked instance 0x797114d53640 of type "_shortfin_default.lib.local.Fiber"
+ - leaked instance 0x79711400ce20 of type "_shortfin_default.lib.local.System"
+ - leaked instance 0x79736d318bd8 of type "_shortfin_default.lib.local.ProgramFunction"
+ - leaked instance 0x79736fd7a5c8 of type "_shortfin_default.lib.local.StaticProgramParameters"
+ - leaked instance 0x797114d53ab0 of type "_shortfin_default.lib.local.Queue"
+ - leaked instance 0x79737857ff48 of type "_shortfin_default.lib.local.ScopedDevice"
+ - leaked instance 0x79736d318b88 of type "_shortfin_default.lib.local.ProgramFunction"
+ - leaked instance 0x7973857912d8 of type "_shortfin_default.lib.local.MessageFuture"
+ - leaked instance 0x797114dd1be0 of type "_shortfin_default.lib.local.Worker"
+ - leaked instance 0x7973939aece8 of type "_shortfin_default.lib.array.DType"
+ - leaked instance 0x7973726bf148 of type "_shortfin_default.lib.local.ProgramModule"
+ - leaked instance 0x79711401a730 of type "_shortfin_default.lib.local.Queue"
+ - leaked instance 0x79736fdb7ba8 of type "shortfin_apps.llm.components.messages.StrobeMessage"
+ - leaked instance 0x79736d30cdc8 of type "_shortfin_default.lib.local.QueueWriter"
+ - leaked instance 0x79736d318a98 of type "_shortfin_default.lib.local.ProgramFunction"
+ - leaked instance 0x79736d318d18 of type "_shortfin_default.lib.local.QueueReader"
+ - leaked instance 0x7973939aeb68 of type "_shortfin_default.lib.array.DType"
+nanobind: leaked 8 keep_alive records!
+nanobind: leaked 19 types!
+ - leaked type "_shortfin_default.lib.local.QueueReader"
+ - leaked type "_shortfin_default.lib.local.Worker"
+ - leaked type "_shortfin_default.lib.local.QueueWriter"
+ - leaked type "_shortfin_default.lib.local.System"
+ - leaked type "_shortfin_default.lib.local.BaseProgramParameters"
+ - leaked type "_shortfin_default.lib.local.MessageFuture"
+ - leaked type "_shortfin_default.lib.local.StaticProgramParameters"
+ - leaked type "_shortfin_default.lib.local.Message"
+ - leaked type "_shortfin_default.lib.local.ProgramModule"
+ - leaked type "_shortfin_default.lib.local.Queue"
+ - leaked type "_shortfin_default.lib.array.device_array"
+ - ... skipped remainder
+nanobind: leaked 108 functions!
+ - leaked function ""
+ - leaked function ""
+ - leaked function "__init__"
+ - leaked function "__eq__"
+ - leaked function "__call__"
+ - leaked function "write_nodelay"
+ - leaked function "create_worker"
+ - leaked function ""
+ - leaked function "copy_from"
+ - leaked function ""
+ - leaked function "__new__"
+ - ... skipped remainder
+nanobind: this is likely caused by a reference counting issue in the binding code.

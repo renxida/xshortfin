@@ -1,0 +1,1714 @@
+Exporting with batch size 1,4
++ WD=/home/xidaren2/xshortfin/goldens/exported_llama_model
++ rm -rf /home/xidaren2/xshortfin/goldens/exported_llama_model
++ mkdir -p /home/xidaren2/xshortfin/goldens/exported_llama_model
++ huggingface-cli download --local-dir /home/xidaren2/xshortfin/goldens/exported_llama_model SlyEcho/open_llama_3b_v2_gguf open-llama-3b-v2-f16.gguf
+Consider using `hf_transfer` for faster downloads. This solution comes with some limitations. See https://huggingface.co/docs/huggingface_hub/hf_transfer for more details.
+/home/xidaren2/xshortfin/goldens/exported_llama_model/open-llama-3b-v2-f16.gguf
++ python -m sharktank.tools.dump_gguf --gguf-file /home/xidaren2/xshortfin/goldens/exported_llama_model/open-llama-3b-v2-f16.gguf --save /home/xidaren2/xshortfin/goldens/exported_llama_model/open-llama-3b-v2-f16.irpa
+/home/xidaren2/SHARK-Platform/sharktank/sharktank/types/gguf_interop/base.py:84: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at ../torch/csrc/utils/tensor_numpy.cpp:206.)
+  data_tensor = torch.as_tensor(data.reshape(logical_shape))
+Saving to: /home/xidaren2/xshortfin/goldens/exported_llama_model/open-llama-3b-v2-f16.irpa
+Save: Add PrimitiveTensor(token_embd.weight, [32000, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.0.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.0.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.0.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.0.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.0.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.0.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.0.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.0.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.0.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.1.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.1.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.1.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.1.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.1.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.1.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.1.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.1.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.1.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.2.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.2.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.2.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.2.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.2.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.2.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.2.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.2.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.2.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.3.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.3.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.3.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.3.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.3.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.3.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.3.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.3.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.3.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.4.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.4.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.4.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.4.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.4.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.4.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.4.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.4.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.4.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.5.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.5.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.5.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.5.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.5.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.5.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.5.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.5.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.5.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.6.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.6.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.6.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.6.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.6.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.6.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.6.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.6.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.6.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.7.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.7.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.7.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.7.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.7.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.7.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.7.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.7.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.7.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.8.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.8.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.8.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.8.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.8.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.8.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.8.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.8.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.8.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.9.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.9.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.9.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.9.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.9.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.9.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.9.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.9.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.9.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.10.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.10.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.10.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.10.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.10.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.10.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.10.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.10.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.10.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.11.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.11.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.11.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.11.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.11.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.11.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.11.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.11.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.11.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.12.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.12.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.12.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.12.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.12.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.12.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.12.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.12.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.12.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.13.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.13.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.13.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.13.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.13.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.13.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.13.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.13.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.13.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.14.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.14.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.14.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.14.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.14.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.14.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.14.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.14.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.14.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.15.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.15.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.15.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.15.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.15.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.15.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.15.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.15.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.15.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.16.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.16.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.16.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.16.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.16.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.16.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.16.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.16.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.16.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.17.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.17.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.17.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.17.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.17.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.17.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.17.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.17.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.17.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.18.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.18.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.18.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.18.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.18.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.18.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.18.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.18.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.18.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.19.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.19.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.19.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.19.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.19.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.19.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.19.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.19.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.19.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.20.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.20.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.20.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.20.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.20.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.20.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.20.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.20.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.20.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.21.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.21.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.21.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.21.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.21.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.21.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.21.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.21.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.21.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.22.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.22.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.22.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.22.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.22.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.22.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.22.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.22.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.22.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.23.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.23.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.23.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.23.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.23.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.23.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.23.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.23.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.23.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.24.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.24.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.24.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.24.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.24.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.24.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.24.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.24.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.24.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.25.attn_q.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.25.attn_k.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.25.attn_v.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.25.attn_output.weight, [3200, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.25.ffn_gate.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.25.ffn_down.weight, [3200, 8640], torch.float16)
+Save: Add PrimitiveTensor(blk.25.ffn_up.weight, [8640, 3200], torch.float16)
+Save: Add PrimitiveTensor(blk.25.attn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(blk.25.ffn_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(output_norm.weight, [3200], torch.float32)
+Save: Add PrimitiveTensor(output.weight, [32000, 3200], torch.float16)
+Save: Add __SHARK_DATASET__:
+    {
+      "schema": "GGUF",
+      "GGUF.version": 2,
+      "GGUF.tensor_count": 237,
+      "GGUF.kv_count": 18,
+      "general.architecture": "llama",
+      "general.name": ".",
+      "llama.context_length": 2048,
+      "llama.embedding_length": 3200,
+      "llama.block_count": 26,
+      "llama.feed_forward_length": 8640,
+      "llama.rope.dimension_count": 100,
+      "llama.attention.head_count": 32,
+      "llama.attention.head_count_kv": 32,
+      "llama.attention.layer_norm_rms_epsilon": 9.999999974752427e-07,
+      "general.file_type": 1,
+      "tokenizer.ggml.model": "llama",
+      "tokenizer.ggml.bos_token_id": 1,
+      "tokenizer.ggml.eos_token_id": 2,
+      "tokenizer.ggml.padding_token_id": 0,
+      "SHARK_DATASET_VERSION": 1
+    }
+Save: Add __SHARK_INFERENCE_TENSORS__:
+    {
+      "token_embd.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "token_embd.weight"
+        }
+      },
+      "blk.0.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.0.attn_q.weight"
+        }
+      },
+      "blk.0.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.0.attn_k.weight"
+        }
+      },
+      "blk.0.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.0.attn_v.weight"
+        }
+      },
+      "blk.0.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.0.attn_output.weight"
+        }
+      },
+      "blk.0.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.0.ffn_gate.weight"
+        }
+      },
+      "blk.0.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.0.ffn_down.weight"
+        }
+      },
+      "blk.0.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.0.ffn_up.weight"
+        }
+      },
+      "blk.0.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.0.attn_norm.weight"
+        }
+      },
+      "blk.0.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.0.ffn_norm.weight"
+        }
+      },
+      "blk.1.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.1.attn_q.weight"
+        }
+      },
+      "blk.1.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.1.attn_k.weight"
+        }
+      },
+      "blk.1.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.1.attn_v.weight"
+        }
+      },
+      "blk.1.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.1.attn_output.weight"
+        }
+      },
+      "blk.1.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.1.ffn_gate.weight"
+        }
+      },
+      "blk.1.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.1.ffn_down.weight"
+        }
+      },
+      "blk.1.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.1.ffn_up.weight"
+        }
+      },
+      "blk.1.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.1.attn_norm.weight"
+        }
+      },
+      "blk.1.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.1.ffn_norm.weight"
+        }
+      },
+      "blk.2.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.2.attn_q.weight"
+        }
+      },
+      "blk.2.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.2.attn_k.weight"
+        }
+      },
+      "blk.2.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.2.attn_v.weight"
+        }
+      },
+      "blk.2.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.2.attn_output.weight"
+        }
+      },
+      "blk.2.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.2.ffn_gate.weight"
+        }
+      },
+      "blk.2.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.2.ffn_down.weight"
+        }
+      },
+      "blk.2.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.2.ffn_up.weight"
+        }
+      },
+      "blk.2.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.2.attn_norm.weight"
+        }
+      },
+      "blk.2.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.2.ffn_norm.weight"
+        }
+      },
+      "blk.3.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.3.attn_q.weight"
+        }
+      },
+      "blk.3.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.3.attn_k.weight"
+        }
+      },
+      "blk.3.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.3.attn_v.weight"
+        }
+      },
+      "blk.3.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.3.attn_output.weight"
+        }
+      },
+      "blk.3.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.3.ffn_gate.weight"
+        }
+      },
+      "blk.3.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.3.ffn_down.weight"
+        }
+      },
+      "blk.3.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.3.ffn_up.weight"
+        }
+      },
+      "blk.3.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.3.attn_norm.weight"
+        }
+      },
+      "blk.3.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.3.ffn_norm.weight"
+        }
+      },
+      "blk.4.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.4.attn_q.weight"
+        }
+      },
+      "blk.4.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.4.attn_k.weight"
+        }
+      },
+      "blk.4.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.4.attn_v.weight"
+        }
+      },
+      "blk.4.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.4.attn_output.weight"
+        }
+      },
+      "blk.4.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.4.ffn_gate.weight"
+        }
+      },
+      "blk.4.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.4.ffn_down.weight"
+        }
+      },
+      "blk.4.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.4.ffn_up.weight"
+        }
+      },
+      "blk.4.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.4.attn_norm.weight"
+        }
+      },
+      "blk.4.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.4.ffn_norm.weight"
+        }
+      },
+      "blk.5.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.5.attn_q.weight"
+        }
+      },
+      "blk.5.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.5.attn_k.weight"
+        }
+      },
+      "blk.5.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.5.attn_v.weight"
+        }
+      },
+      "blk.5.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.5.attn_output.weight"
+        }
+      },
+      "blk.5.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.5.ffn_gate.weight"
+        }
+      },
+      "blk.5.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.5.ffn_down.weight"
+        }
+      },
+      "blk.5.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.5.ffn_up.weight"
+        }
+      },
+      "blk.5.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.5.attn_norm.weight"
+        }
+      },
+      "blk.5.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.5.ffn_norm.weight"
+        }
+      },
+      "blk.6.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.6.attn_q.weight"
+        }
+      },
+      "blk.6.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.6.attn_k.weight"
+        }
+      },
+      "blk.6.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.6.attn_v.weight"
+        }
+      },
+      "blk.6.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.6.attn_output.weight"
+        }
+      },
+      "blk.6.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.6.ffn_gate.weight"
+        }
+      },
+      "blk.6.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.6.ffn_down.weight"
+        }
+      },
+      "blk.6.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.6.ffn_up.weight"
+        }
+      },
+      "blk.6.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.6.attn_norm.weight"
+        }
+      },
+      "blk.6.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.6.ffn_norm.weight"
+        }
+      },
+      "blk.7.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.7.attn_q.weight"
+        }
+      },
+      "blk.7.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.7.attn_k.weight"
+        }
+      },
+      "blk.7.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.7.attn_v.weight"
+        }
+      },
+      "blk.7.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.7.attn_output.weight"
+        }
+      },
+      "blk.7.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.7.ffn_gate.weight"
+        }
+      },
+      "blk.7.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.7.ffn_down.weight"
+        }
+      },
+      "blk.7.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.7.ffn_up.weight"
+        }
+      },
+      "blk.7.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.7.attn_norm.weight"
+        }
+      },
+      "blk.7.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.7.ffn_norm.weight"
+        }
+      },
+      "blk.8.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.8.attn_q.weight"
+        }
+      },
+      "blk.8.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.8.attn_k.weight"
+        }
+      },
+      "blk.8.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.8.attn_v.weight"
+        }
+      },
+      "blk.8.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.8.attn_output.weight"
+        }
+      },
+      "blk.8.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.8.ffn_gate.weight"
+        }
+      },
+      "blk.8.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.8.ffn_down.weight"
+        }
+      },
+      "blk.8.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.8.ffn_up.weight"
+        }
+      },
+      "blk.8.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.8.attn_norm.weight"
+        }
+      },
+      "blk.8.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.8.ffn_norm.weight"
+        }
+      },
+      "blk.9.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.9.attn_q.weight"
+        }
+      },
+      "blk.9.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.9.attn_k.weight"
+        }
+      },
+      "blk.9.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.9.attn_v.weight"
+        }
+      },
+      "blk.9.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.9.attn_output.weight"
+        }
+      },
+      "blk.9.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.9.ffn_gate.weight"
+        }
+      },
+      "blk.9.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.9.ffn_down.weight"
+        }
+      },
+      "blk.9.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.9.ffn_up.weight"
+        }
+      },
+      "blk.9.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.9.attn_norm.weight"
+        }
+      },
+      "blk.9.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.9.ffn_norm.weight"
+        }
+      },
+      "blk.10.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.10.attn_q.weight"
+        }
+      },
+      "blk.10.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.10.attn_k.weight"
+        }
+      },
+      "blk.10.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.10.attn_v.weight"
+        }
+      },
+      "blk.10.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.10.attn_output.weight"
+        }
+      },
+      "blk.10.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.10.ffn_gate.weight"
+        }
+      },
+      "blk.10.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.10.ffn_down.weight"
+        }
+      },
+      "blk.10.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.10.ffn_up.weight"
+        }
+      },
+      "blk.10.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.10.attn_norm.weight"
+        }
+      },
+      "blk.10.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.10.ffn_norm.weight"
+        }
+      },
+      "blk.11.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.11.attn_q.weight"
+        }
+      },
+      "blk.11.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.11.attn_k.weight"
+        }
+      },
+      "blk.11.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.11.attn_v.weight"
+        }
+      },
+      "blk.11.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.11.attn_output.weight"
+        }
+      },
+      "blk.11.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.11.ffn_gate.weight"
+        }
+      },
+      "blk.11.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.11.ffn_down.weight"
+        }
+      },
+      "blk.11.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.11.ffn_up.weight"
+        }
+      },
+      "blk.11.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.11.attn_norm.weight"
+        }
+      },
+      "blk.11.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.11.ffn_norm.weight"
+        }
+      },
+      "blk.12.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.12.attn_q.weight"
+        }
+      },
+      "blk.12.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.12.attn_k.weight"
+        }
+      },
+      "blk.12.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.12.attn_v.weight"
+        }
+      },
+      "blk.12.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.12.attn_output.weight"
+        }
+      },
+      "blk.12.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.12.ffn_gate.weight"
+        }
+      },
+      "blk.12.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.12.ffn_down.weight"
+        }
+      },
+      "blk.12.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.12.ffn_up.weight"
+        }
+      },
+      "blk.12.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.12.attn_norm.weight"
+        }
+      },
+      "blk.12.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.12.ffn_norm.weight"
+        }
+      },
+      "blk.13.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.13.attn_q.weight"
+        }
+      },
+      "blk.13.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.13.attn_k.weight"
+        }
+      },
+      "blk.13.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.13.attn_v.weight"
+        }
+      },
+      "blk.13.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.13.attn_output.weight"
+        }
+      },
+      "blk.13.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.13.ffn_gate.weight"
+        }
+      },
+      "blk.13.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.13.ffn_down.weight"
+        }
+      },
+      "blk.13.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.13.ffn_up.weight"
+        }
+      },
+      "blk.13.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.13.attn_norm.weight"
+        }
+      },
+      "blk.13.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.13.ffn_norm.weight"
+        }
+      },
+      "blk.14.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.14.attn_q.weight"
+        }
+      },
+      "blk.14.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.14.attn_k.weight"
+        }
+      },
+      "blk.14.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.14.attn_v.weight"
+        }
+      },
+      "blk.14.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.14.attn_output.weight"
+        }
+      },
+      "blk.14.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.14.ffn_gate.weight"
+        }
+      },
+      "blk.14.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.14.ffn_down.weight"
+        }
+      },
+      "blk.14.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.14.ffn_up.weight"
+        }
+      },
+      "blk.14.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.14.attn_norm.weight"
+        }
+      },
+      "blk.14.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.14.ffn_norm.weight"
+        }
+      },
+      "blk.15.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.15.attn_q.weight"
+        }
+      },
+      "blk.15.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.15.attn_k.weight"
+        }
+      },
+      "blk.15.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.15.attn_v.weight"
+        }
+      },
+      "blk.15.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.15.attn_output.weight"
+        }
+      },
+      "blk.15.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.15.ffn_gate.weight"
+        }
+      },
+      "blk.15.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.15.ffn_down.weight"
+        }
+      },
+      "blk.15.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.15.ffn_up.weight"
+        }
+      },
+      "blk.15.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.15.attn_norm.weight"
+        }
+      },
+      "blk.15.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.15.ffn_norm.weight"
+        }
+      },
+      "blk.16.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.16.attn_q.weight"
+        }
+      },
+      "blk.16.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.16.attn_k.weight"
+        }
+      },
+      "blk.16.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.16.attn_v.weight"
+        }
+      },
+      "blk.16.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.16.attn_output.weight"
+        }
+      },
+      "blk.16.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.16.ffn_gate.weight"
+        }
+      },
+      "blk.16.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.16.ffn_down.weight"
+        }
+      },
+      "blk.16.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.16.ffn_up.weight"
+        }
+      },
+      "blk.16.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.16.attn_norm.weight"
+        }
+      },
+      "blk.16.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.16.ffn_norm.weight"
+        }
+      },
+      "blk.17.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.17.attn_q.weight"
+        }
+      },
+      "blk.17.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.17.attn_k.weight"
+        }
+      },
+      "blk.17.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.17.attn_v.weight"
+        }
+      },
+      "blk.17.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.17.attn_output.weight"
+        }
+      },
+      "blk.17.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.17.ffn_gate.weight"
+        }
+      },
+      "blk.17.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.17.ffn_down.weight"
+        }
+      },
+      "blk.17.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.17.ffn_up.weight"
+        }
+      },
+      "blk.17.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.17.attn_norm.weight"
+        }
+      },
+      "blk.17.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.17.ffn_norm.weight"
+        }
+      },
+      "blk.18.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.18.attn_q.weight"
+        }
+      },
+      "blk.18.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.18.attn_k.weight"
+        }
+      },
+      "blk.18.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.18.attn_v.weight"
+        }
+      },
+      "blk.18.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.18.attn_output.weight"
+        }
+      },
+      "blk.18.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.18.ffn_gate.weight"
+        }
+      },
+      "blk.18.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.18.ffn_down.weight"
+        }
+      },
+      "blk.18.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.18.ffn_up.weight"
+        }
+      },
+      "blk.18.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.18.attn_norm.weight"
+        }
+      },
+      "blk.18.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.18.ffn_norm.weight"
+        }
+      },
+      "blk.19.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.19.attn_q.weight"
+        }
+      },
+      "blk.19.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.19.attn_k.weight"
+        }
+      },
+      "blk.19.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.19.attn_v.weight"
+        }
+      },
+      "blk.19.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.19.attn_output.weight"
+        }
+      },
+      "blk.19.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.19.ffn_gate.weight"
+        }
+      },
+      "blk.19.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.19.ffn_down.weight"
+        }
+      },
+      "blk.19.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.19.ffn_up.weight"
+        }
+      },
+      "blk.19.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.19.attn_norm.weight"
+        }
+      },
+      "blk.19.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.19.ffn_norm.weight"
+        }
+      },
+      "blk.20.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.20.attn_q.weight"
+        }
+      },
+      "blk.20.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.20.attn_k.weight"
+        }
+      },
+      "blk.20.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.20.attn_v.weight"
+        }
+      },
+      "blk.20.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.20.attn_output.weight"
+        }
+      },
+      "blk.20.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.20.ffn_gate.weight"
+        }
+      },
+      "blk.20.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.20.ffn_down.weight"
+        }
+      },
+      "blk.20.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.20.ffn_up.weight"
+        }
+      },
+      "blk.20.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.20.attn_norm.weight"
+        }
+      },
+      "blk.20.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.20.ffn_norm.weight"
+        }
+      },
+      "blk.21.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.21.attn_q.weight"
+        }
+      },
+      "blk.21.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.21.attn_k.weight"
+        }
+      },
+      "blk.21.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.21.attn_v.weight"
+        }
+      },
+      "blk.21.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.21.attn_output.weight"
+        }
+      },
+      "blk.21.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.21.ffn_gate.weight"
+        }
+      },
+      "blk.21.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.21.ffn_down.weight"
+        }
+      },
+      "blk.21.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.21.ffn_up.weight"
+        }
+      },
+      "blk.21.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.21.attn_norm.weight"
+        }
+      },
+      "blk.21.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.21.ffn_norm.weight"
+        }
+      },
+      "blk.22.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.22.attn_q.weight"
+        }
+      },
+      "blk.22.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.22.attn_k.weight"
+        }
+      },
+      "blk.22.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.22.attn_v.weight"
+        }
+      },
+      "blk.22.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.22.attn_output.weight"
+        }
+      },
+      "blk.22.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.22.ffn_gate.weight"
+        }
+      },
+      "blk.22.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.22.ffn_down.weight"
+        }
+      },
+      "blk.22.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.22.ffn_up.weight"
+        }
+      },
+      "blk.22.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.22.attn_norm.weight"
+        }
+      },
+      "blk.22.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.22.ffn_norm.weight"
+        }
+      },
+      "blk.23.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.23.attn_q.weight"
+        }
+      },
+      "blk.23.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.23.attn_k.weight"
+        }
+      },
+      "blk.23.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.23.attn_v.weight"
+        }
+      },
+      "blk.23.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.23.attn_output.weight"
+        }
+      },
+      "blk.23.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.23.ffn_gate.weight"
+        }
+      },
+      "blk.23.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.23.ffn_down.weight"
+        }
+      },
+      "blk.23.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.23.ffn_up.weight"
+        }
+      },
+      "blk.23.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.23.attn_norm.weight"
+        }
+      },
+      "blk.23.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.23.ffn_norm.weight"
+        }
+      },
+      "blk.24.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.24.attn_q.weight"
+        }
+      },
+      "blk.24.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.24.attn_k.weight"
+        }
+      },
+      "blk.24.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.24.attn_v.weight"
+        }
+      },
+      "blk.24.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.24.attn_output.weight"
+        }
+      },
+      "blk.24.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.24.ffn_gate.weight"
+        }
+      },
+      "blk.24.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.24.ffn_down.weight"
+        }
+      },
+      "blk.24.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.24.ffn_up.weight"
+        }
+      },
+      "blk.24.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.24.attn_norm.weight"
+        }
+      },
+      "blk.24.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.24.ffn_norm.weight"
+        }
+      },
+      "blk.25.attn_q.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.25.attn_q.weight"
+        }
+      },
+      "blk.25.attn_k.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.25.attn_k.weight"
+        }
+      },
+      "blk.25.attn_v.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.25.attn_v.weight"
+        }
+      },
+      "blk.25.attn_output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.25.attn_output.weight"
+        }
+      },
+      "blk.25.ffn_gate.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.25.ffn_gate.weight"
+        }
+      },
+      "blk.25.ffn_down.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.25.ffn_down.weight"
+        }
+      },
+      "blk.25.ffn_up.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.25.ffn_up.weight"
+        }
+      },
+      "blk.25.attn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.25.attn_norm.weight"
+        }
+      },
+      "blk.25.ffn_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "blk.25.ffn_norm.weight"
+        }
+      },
+      "output_norm.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "output_norm.weight"
+        }
+      },
+      "output.weight": {
+        "type_name": "PrimitiveTensor",
+        "raw_tensors": {
+          "": "output.weight"
+        }
+      }
+    }
+Save: Saving file
++ HUGGING_FACE_TOKENIZER=openlm-research/open_llama_3b_v2
++ python -
+You are using the default legacy behaviour of the <class 'transformers.models.llama.tokenization_llama.LlamaTokenizer'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
++ python -m sharktank.examples.export_paged_llm_v1 --gguf-file=/home/xidaren2/xshortfin/goldens/exported_llama_model/open-llama-3b-v2-f16.gguf --output-mlir=/home/xidaren2/xshortfin/goldens/exported_llama_model/model.mlir --output-config=/home/xidaren2/xshortfin/goldens/exported_llama_model/config.json --bs=1,4
+/home/xidaren2/SHARK-Platform/sharktank/sharktank/types/gguf_interop/base.py:84: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at ../torch/csrc/utils/tensor_numpy.cpp:206.)
+  data_tensor = torch.as_tensor(data.reshape(logical_shape))
+/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py:1364: UserWarning: ComplexHalf support is experimental and many operators don't support it yet. (Triggered internally at ../aten/src/ATen/EmptyTensor.cpp:44.)
+  empty = torch.empty_strided(
+Exporting prefill_bs1
+Exporting decode_bs1
+Exporting prefill_bs4
+Exporting decode_bs4
+GENERATED!
+Exporting
+Saving to '/home/xidaren2/xshortfin/goldens/exported_llama_model/model.mlir'
++ iree-compile /home/xidaren2/xshortfin/goldens/exported_llama_model/model.mlir --iree-hal-target-backends=rocm --iree-hip-target=gfx1100 -o /home/xidaren2/xshortfin/goldens/exported_llama_model/model.vmfb
++ cat

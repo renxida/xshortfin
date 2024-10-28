@@ -1,0 +1,151 @@
+[2024-10-28 16:38:20.004] [info] [manager.py:21] Created local system with ['amdgpu:0:0@0'] devices
+[2024-10-28 16:38:20.032] [info] [cache.py:78] Allocating page table (shape=[256, 2662400], dtype=float16, size=1.3GiB) on DeviceAffinity(amdgpu:0:0@0[0x1])
+[2024-10-28 16:38:20.033] [info] [service.py:64] Loading parameter fiber 'model' from: /tmp/export_and_serve/open-llama-3b-v2-f16.gguf
+[2024-10-28 16:38:20.039] [info] [server.py:82] Started server process [750887]
+[2024-10-28 16:38:20.039] [info] [on.py:48] Waiting for application startup.
+[2024-10-28 16:38:20.039] [info] [manager.py:29] Starting system manager
+[2024-10-28 16:38:20.039] [info] [server.py:41] Initializing service 'default': ServiceManager(
+  model_params=ModelParams(max_seq_len=2048, transformer_block_count=26, attn_head_count=32, attn_head_dim=100, prefill_batch_sizes=[1, 4], decode_batch_sizes=[1, 4], module_name='module', module_abi_version=1, attn_dtype=float16, paged_kv_cache=PagedKVCacheParams(block_seq_stride=16, device_block_count=256))
+  inference_modules=[ProgramModule('module', version=0, exports=[prefill_bs1$async(0rrrrrr_r), prefill_bs1(0rrrr_r), decode_bs1$async(0rrrrrrr_r), decode_bs1(0rrrrr_r), prefill_bs4$async(0rrrrrr_r), prefill_bs4(0rrrr_r), decode_bs4$async(0rrrrrrr_r), decode_bs4(0rrrrr_r), __init(0v_v)])]
+  page_cache=AttnPageCache(0/256 pages in use: 100.0% free)
+)
+[2024-10-28 16:38:20.971] [info] [on.py:62] Application startup complete.
+[2024-10-28 16:38:20.973] [info] [server.py:214] Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+[2024-10-28 16:38:23.703] [info] [h11_impl.py:476] 127.0.0.1:38244 - "GET /health HTTP/1.1" 200
+[2024-10-28 16:38:23.712] [info] [service.py:381] INVOKE ProgramFunction(prefill_bs1$async: 0rrrrrr_r): 
+  0: [1, 16]
+  1: [1]
+  2: [1, 1]
+  3: [256, 2662400]
+[2024-10-28 16:38:24.559] [info] [service.py:389] INVOKE ProgramFunction(prefill_bs1$async: 0rrrrrr_r): done
+[2024-10-28 16:38:24.559] [info] [service.py:390] Token and logit dump after phase: InferencePhase.PREFILL
+[2024-10-28 16:38:24.611] [info] [service.py:444] Token ID   Token                Probability
+[2024-10-28 16:38:24.611] [info] [service.py:445] ----------------------------------------
+[2024-10-28 16:38:24.611] [info] [service.py:450] 29500      ▁                    0.8447
+[2024-10-28 16:38:24.611] [info] [service.py:450] 13         <0x0A>               0.0247
+[2024-10-28 16:38:24.611] [info] [service.py:450] 5431       ▁Next                0.0181
+[2024-10-28 16:38:24.611] [info] [service.py:450] 1259       ▁>                   0.0110
+[2024-10-28 16:38:24.611] [info] [service.py:450] 2132       ▁...                 0.0106
+[2024-10-28 16:38:24.611] [info] [service.py:450] 3319       ▁…                   0.0103
+[2024-10-28 16:38:24.611] [info] [service.py:450] 4306       ▁»                   0.0091
+[2024-10-28 16:38:24.611] [info] [service.py:450] 17809      ▁›                   0.0052
+[2024-10-28 16:38:24.611] [info] [service.py:450] 2          </s>                 0.0030
+[2024-10-28 16:38:24.611] [info] [service.py:450] 827        ▁|                   0.0029
+[2024-10-28 16:38:24.613] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-28 16:38:24.859] [info] [service.py:381] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): 
+  0: [1, 1]
+  1: [1]
+  2: [1]
+  3: [1, 1]
+  4: [256, 2662400]
+[2024-10-28 16:38:24.934] [info] [service.py:389] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): done
+[2024-10-28 16:38:24.934] [info] [service.py:390] Token and logit dump after phase: InferencePhase.DECODE
+[2024-10-28 16:38:24.954] [info] [service.py:444] Token ID   Token                Probability
+[2024-10-28 16:38:24.954] [info] [service.py:445] ----------------------------------------
+[2024-10-28 16:38:24.954] [info] [service.py:450] 29536      2                    0.0866
+[2024-10-28 16:38:24.954] [info] [service.py:450] 29532      1                    0.0776
+[2024-10-28 16:38:24.954] [info] [service.py:450] 29520      .                    0.0588
+[2024-10-28 16:38:24.954] [info] [service.py:450] 29529      0                    0.0527
+[2024-10-28 16:38:24.954] [info] [service.py:450] 13         <0x0A>               0.0460
+[2024-10-28 16:38:24.954] [info] [service.py:450] 29561      5                    0.0275
+[2024-10-28 16:38:24.954] [info] [service.py:450] 29556      3                    0.0273
+[2024-10-28 16:38:24.954] [info] [service.py:450] 29522      ,                    0.0188
+[2024-10-28 16:38:24.954] [info] [service.py:450] 29562      4                    0.0173
+[2024-10-28 16:38:24.954] [info] [service.py:450] 29525      -                    0.0148
+[2024-10-28 16:38:24.957] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-28 16:38:25.108] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-28 16:38:25.359] [info] [service.py:381] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): 
+  0: [1, 1]
+  1: [1]
+  2: [1]
+  3: [1, 1]
+  4: [256, 2662400]
+[2024-10-28 16:38:25.434] [info] [service.py:389] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): done
+[2024-10-28 16:38:25.434] [info] [service.py:390] Token and logit dump after phase: InferencePhase.DECODE
+[2024-10-28 16:38:25.454] [info] [service.py:444] Token ID   Token                Probability
+[2024-10-28 16:38:25.454] [info] [service.py:445] ----------------------------------------
+[2024-10-28 16:38:25.454] [info] [service.py:450] 353        ▁(                   0.0040
+[2024-10-28 16:38:25.454] [info] [service.py:450] 13         <0x0A>               0.0014
+[2024-10-28 16:38:25.454] [info] [service.py:450] 29537      :                    0.0008
+[2024-10-28 16:38:25.454] [info] [service.py:450] 29520      .                    0.0008
+[2024-10-28 16:38:25.454] [info] [service.py:450] 29522      ,                    0.0007
+[2024-10-28 16:38:25.454] [info] [service.py:450] 7868       ▁infrast             0.0007
+[2024-10-28 16:38:25.454] [info] [service.py:450] 29500      ▁                    0.0007
+[2024-10-28 16:38:25.454] [info] [service.py:450] 29508      s                    0.0006
+[2024-10-28 16:38:25.454] [info] [service.py:450] 14802      ▁hier                0.0005
+[2024-10-28 16:38:25.454] [info] [service.py:450] 29502      t                    0.0005
+[2024-10-28 16:38:25.457] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-28 16:38:25.609] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-28 16:38:25.859] [info] [service.py:381] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): 
+  0: [1, 1]
+  1: [1]
+  2: [1]
+  3: [1, 1]
+  4: [256, 2662400]
+[2024-10-28 16:38:25.934] [info] [service.py:389] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): done
+[2024-10-28 16:38:25.934] [info] [service.py:390] Token and logit dump after phase: InferencePhase.DECODE
+[2024-10-28 16:38:25.953] [info] [service.py:444] Token ID   Token                Probability
+[2024-10-28 16:38:25.953] [info] [service.py:445] ----------------------------------------
+[2024-10-28 16:38:25.953] [info] [service.py:450] 353        ▁(                   0.0110
+[2024-10-28 16:38:25.953] [info] [service.py:450] 13         <0x0A>               0.0057
+[2024-10-28 16:38:25.953] [info] [service.py:450] 29520      .                    0.0028
+[2024-10-28 16:38:25.953] [info] [service.py:450] 29522      ,                    0.0025
+[2024-10-28 16:38:25.953] [info] [service.py:450] 29537      :                    0.0025
+[2024-10-28 16:38:25.953] [info] [service.py:450] 29500      ▁                    0.0021
+[2024-10-28 16:38:25.953] [info] [service.py:450] 29508      s                    0.0018
+[2024-10-28 16:38:25.953] [info] [service.py:450] 29532      1                    0.0015
+[2024-10-28 16:38:25.953] [info] [service.py:450] 260        ▁a                   0.0015
+[2024-10-28 16:38:25.953] [info] [service.py:450] 268        ▁the                 0.0012
+[2024-10-28 16:38:25.956] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-28 16:38:26.109] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-28 16:38:26.360] [info] [service.py:381] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): 
+  0: [1, 1]
+  1: [1]
+  2: [1]
+  3: [1, 1]
+  4: [256, 2662400]
+[2024-10-28 16:38:26.435] [info] [service.py:389] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): done
+[2024-10-28 16:38:26.435] [info] [service.py:390] Token and logit dump after phase: InferencePhase.DECODE
+[2024-10-28 16:38:26.454] [info] [service.py:444] Token ID   Token                Probability
+[2024-10-28 16:38:26.454] [info] [service.py:445] ----------------------------------------
+[2024-10-28 16:38:26.454] [info] [service.py:450] 353        ▁(                   0.0110
+[2024-10-28 16:38:26.454] [info] [service.py:450] 13         <0x0A>               0.0057
+[2024-10-28 16:38:26.454] [info] [service.py:450] 29520      .                    0.0028
+[2024-10-28 16:38:26.454] [info] [service.py:450] 29522      ,                    0.0025
+[2024-10-28 16:38:26.454] [info] [service.py:450] 29537      :                    0.0025
+[2024-10-28 16:38:26.454] [info] [service.py:450] 29500      ▁                    0.0021
+[2024-10-28 16:38:26.454] [info] [service.py:450] 29508      s                    0.0018
+[2024-10-28 16:38:26.454] [info] [service.py:450] 29532      1                    0.0015
+[2024-10-28 16:38:26.454] [info] [service.py:450] 260        ▁a                   0.0015
+[2024-10-28 16:38:26.454] [info] [service.py:450] 268        ▁the                 0.0012
+[2024-10-28 16:38:26.457] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-28 16:38:26.610] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-28 16:38:26.860] [info] [service.py:381] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): 
+  0: [1, 1]
+  1: [1]
+  2: [1]
+  3: [1, 1]
+  4: [256, 2662400]
+[2024-10-28 16:38:26.935] [info] [service.py:389] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): done
+[2024-10-28 16:38:26.935] [info] [service.py:390] Token and logit dump after phase: InferencePhase.DECODE
+[2024-10-28 16:38:26.954] [info] [service.py:444] Token ID   Token                Probability
+[2024-10-28 16:38:26.954] [info] [service.py:445] ----------------------------------------
+[2024-10-28 16:38:26.954] [info] [service.py:450] 353        ▁(                   0.0110
+[2024-10-28 16:38:26.954] [info] [service.py:450] 13         <0x0A>               0.0057
+[2024-10-28 16:38:26.954] [info] [service.py:450] 29520      .                    0.0028
+[2024-10-28 16:38:26.954] [info] [service.py:450] 29522      ,                    0.0025
+[2024-10-28 16:38:26.954] [info] [service.py:450] 29537      :                    0.0025
+[2024-10-28 16:38:26.954] [info] [service.py:450] 29500      ▁                    0.0021
+[2024-10-28 16:38:26.954] [info] [service.py:450] 29508      s                    0.0018
+[2024-10-28 16:38:26.954] [info] [service.py:450] 29532      1                    0.0015
+[2024-10-28 16:38:26.954] [info] [service.py:450] 260        ▁a                   0.0015
+[2024-10-28 16:38:26.954] [info] [service.py:450] 268        ▁the                 0.0012
+[2024-10-28 16:38:26.957] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-28 16:38:27.110] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-28 16:38:27.361] [info] [service.py:381] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): 
+  0: [1, 1]
+  1: [1]
+  2: [1]
+  3: [1, 1]
+  4: [256, 2662400]
+Memory access fault by GPU node-1 (Agent handle: 0x5f74f52a5650) on address 0x7b0338494000. Reason: Page not present or supervisor privilege.

@@ -20,10 +20,14 @@ rm -rf /home/xidaren2/xshortfin/goldens/iree_run
 mkdir -p /home/xidaren2/xshortfin/goldens/iree_run/prefill_inputs
 mkdir -p /home/xidaren2/xshortfin/goldens/iree_run/prefill_outputs
 
+EXPORTED_DIR=~/xshortfin/goldens/exported_llama_model
+
+
 # Copy VMFB and config and parameters
-cp /home/xidaren2/xshortfin/export/model.vmfb /home/xidaren2/xshortfin/goldens/iree_run/
-cp /home/xidaren2/xshortfin/export/config.json /home/xidaren2/xshortfin/goldens/iree_run/
-cp /home/xidaren2/xshortfin/export/open-llama-3b-v2-f16.gguf /home/xidaren2/xshortfin/goldens/iree_run/
+cp $EXPORTED_DIR/model.vmfb /home/xidaren2/xshortfin/goldens/iree_run/
+cp $EXPORTED_DIR/config.json /home/xidaren2/xshortfin/goldens/iree_run/
+cp $EXPORTED_DIR/open-llama-3b-v2-f16.gguf /home/xidaren2/xshortfin/goldens/iree_run/
+cp $EXPORTED_DIR/open-llama-3b-v2-f16.irpa /home/xidaren2/xshortfin/goldens/iree_run/
 
 echo "=== Running Prefill ==="
 # Copy prefill inputs
@@ -39,7 +43,7 @@ convert_and_copy_cache \
 # Run prefill
 iree-run-module \
     --module=/home/xidaren2/xshortfin/goldens/iree_run/model.vmfb \
-    --parameters=model=/home/xidaren2/xshortfin/goldens/iree_run/open-llama-3b-v2-f16.gguf \
+    --parameters=model=/home/xidaren2/xshortfin/goldens/iree_run/open-llama-3b-v2-f16.irpa \
     --function=prefill_bs1 \
     --device=hip \
     --input=@/home/xidaren2/xshortfin/goldens/iree_run/prefill_inputs/tokens.npy \
@@ -127,7 +131,7 @@ for ((step=0; step<NUM_DECODE_STEPS; step++)); do
     # Run decode step
     iree-run-module \
         --module=/home/xidaren2/xshortfin/goldens/iree_run/model.vmfb \
-        --parameters=model=/home/xidaren2/xshortfin/goldens/iree_run/open-llama-3b-v2-f16.gguf \
+        --parameters=model=/home/xidaren2/xshortfin/goldens/iree_run/open-llama-3b-v2-f16.irpa \
         --function=decode_bs1 \
         --device=hip \
         --input=@/home/xidaren2/xshortfin/goldens/iree_run/decode_invocation${step}_inputs/tokens.npy \
