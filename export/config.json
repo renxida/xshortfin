@@ -1,0 +1,1 @@
+{"module_name": "module", "module_abi_version": 1, "max_seq_len": 2048, "attn_head_count": 32, "attn_head_dim": 100, "prefill_batch_sizes": [1, 4], "decode_batch_sizes": [1, 4], "transformer_block_count": 26, "block_seq_stride": 16}

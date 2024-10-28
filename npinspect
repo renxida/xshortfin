@@ -1,0 +1,87 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import numpy as np
+from pathlib import Path
+
+
+def inspect_npy_file(filepath: Path) -> str:
+    """Inspect a single .npy file and return its description."""
+    try:
+        arr = np.load(filepath)
+        return f"{filepath.name}: shape={arr.shape} dtype={arr.dtype}"
+    except Exception as e:
+        return f"{filepath.name}: ERROR - {str(e)}"
+
+
+def inspect_npz_file(filepath: Path) -> list[str]:
+    """Inspect a .npz file and return descriptions of all arrays inside."""
+    try:
+        with np.load(filepath) as data:
+            return [
+                f"├── {name}: shape={arr.shape} dtype={arr.dtype}"
+                for name, arr in data.items()
+            ]
+    except Exception as e:
+        return [f"ERROR - {str(e)}"]
+
+
+def inspect_directory(dirpath: Path, prefix="") -> list[str]:
+    """Recursively inspect a directory for .npy and .npz files."""
+    results = [f"{prefix}{dirpath.name}/"]
+    
+    # Get all .npy and .npz files in directory
+    try:
+        items = sorted(dirpath.iterdir())
+    except Exception as e:
+        return [f"{prefix}{dirpath.name}/ ERROR - {str(e)}"]
+    
+    for i, path in enumerate(items):
+        is_last = (i == len(items) - 1)
+        current_prefix = prefix + ("└── " if is_last else "├── ")
+        next_prefix = prefix + ("    " if is_last else "│   ")
+        
+        if path.is_file():
+            if path.suffix == '.npy':
+                results.append(f"{current_prefix}{inspect_npy_file(path)}")
+            elif path.suffix == '.npz':
+                results.extend([f"{current_prefix}{path.name}:"] + 
+                             [f"{next_prefix}{line}" for line in inspect_npz_file(path)])
+        elif path.is_dir():
+            results.extend(inspect_directory(path, next_prefix))
+    
+    return results
+
+
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: npinspect <file_or_directory>")
+        sys.exit(1)
+
+    path = Path(sys.argv[1])
+    
+    if not path.exists():
+        print(f"Error: Path '{path}' does not exist")
+        sys.exit(1)
+    
+    if path.is_file():
+        if path.suffix == '.npy':
+            print(inspect_npy_file(path))
+        elif path.suffix == '.npz':
+            print(f"{path.name}:")
+            for line in inspect_npz_file(path):
+                print(f"  {line}")
+        else:
+            print(f"Error: File '{path}' is not a .npy or .npz file")
+            sys.exit(1)
+    elif path.is_dir():
+        for line in inspect_directory(path):
+            print(line)
+    else:
+        print(f"Error: Path '{path}' is neither a file nor a directory")
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()

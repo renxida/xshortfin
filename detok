@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+import sys
+import re
+from transformers import AutoTokenizer
+
+def detokenize_text(token_ids):
+    tokenizer = AutoTokenizer.from_pretrained("openlm-research/open_llama_3b_v2", legacy=False)
+    text = tokenizer.decode(token_ids)
+    return text
+
+def parse_token_ids(input_string):
+    # Find the first non-digit character (if any) to use as the separator
+    separator = re.search(r'\D', input_string)
+    if separator:
+        separator = separator.group()
+        return [int(token) for token in input_string.split(separator) if token]
+    else:
+        # If no separator found, assume it's a single number or space-separated
+        return [int(token) for token in input_string.split()]
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: detok <token_ids>")
+        sys.exit(1)
+    
+    input_string = ' '.join(sys.argv[1:])
+    token_ids = parse_token_ids(input_string)
+    text = detokenize_text(token_ids)
+    print(text)

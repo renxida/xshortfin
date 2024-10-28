@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+import sys
+from transformers import AutoTokenizer
+
+def tokenize_text(text):
+    tokenizer = AutoTokenizer.from_pretrained("openlm-research/open_llama_3b_v2", legacy=False)
+    tokens = tokenizer.encode(text, add_special_tokens=False)
+    return tokens
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: tok <text>")
+        sys.exit(1)
+    
+    text = " ".join(sys.argv[1:])
+    token_ids = tokenize_text(text)
+    print(token_ids)

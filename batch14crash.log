@@ -1,0 +1,149 @@
+[2024-10-23 10:10:21.641] [info] [manager.py:21] Created local system with ['amdgpu:0:0@0'] devices
+[2024-10-23 10:10:21.669] [info] [cache.py:78] Allocating page table (shape=[256, 2662400], dtype=float16, size=1.3GiB) on DeviceAffinity(amdgpu:0:0@0[0x1])
+[2024-10-23 10:10:21.670] [info] [service.py:64] Loading parameter fiber 'model' from: /tmp/sharktank/llama/open-llama-3b-v2-f16.gguf
+[2024-10-23 10:10:21.676] [info] [server.py:82] Started server process [3479592]
+[2024-10-23 10:10:21.676] [info] [on.py:48] Waiting for application startup.
+[2024-10-23 10:10:21.676] [info] [manager.py:29] Starting system manager
+[2024-10-23 10:10:21.676] [info] [server.py:41] Initializing service 'default': ServiceManager(
+  model_params=ModelParams(max_seq_len=2048, transformer_block_count=26, attn_head_count=32, attn_head_dim=100, prefill_batch_sizes=[1, 4], decode_batch_sizes=[1, 4], module_name='module', module_abi_version=1, attn_dtype=float16, paged_kv_cache=PagedKVCacheParams(block_seq_stride=16, device_block_count=256))
+  inference_modules=[ProgramModule('module', version=0, exports=[prefill_bs1$async(0rrrrrr_r), prefill_bs1(0rrrr_r), decode_bs1$async(0rrrrrrr_r), decode_bs1(0rrrrr_r), prefill_bs4$async(0rrrrrr_r), prefill_bs4(0rrrr_r), decode_bs4$async(0rrrrrrr_r), decode_bs4(0rrrrr_r), __init(0v_v)])]
+  page_cache=AttnPageCache(0/256 pages in use: 100.0% free)
+)
+[2024-10-23 10:10:22.666] [info] [on.py:62] Application startup complete.
+[2024-10-23 10:10:22.668] [info] [server.py:214] Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+[2024-10-23 10:10:26.182] [info] [h11_impl.py:476] 127.0.0.1:34058 - "GET /health HTTP/1.1" 200
+[2024-10-23 10:10:26.192] [info] [service.py:381] INVOKE ProgramFunction(prefill_bs1$async: 0rrrrrr_r): 
+  0: [1, 16]
+  1: [1]
+  2: [1, 1]
+  3: [256, 2662400]
+[2024-10-23 10:10:27.024] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-23 10:10:27.274] [info] [service.py:381] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): 
+  0: [1, 1]
+  1: [1]
+  2: [1]
+  3: [1, 1]
+  4: [256, 2662400]
+[2024-10-23 10:10:27.350] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-23 10:10:27.523] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-23 10:10:27.774] [info] [service.py:381] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): 
+  0: [1, 1]
+  1: [1]
+  2: [1]
+  3: [1, 1]
+  4: [256, 2662400]
+[2024-10-23 10:10:27.850] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-23 10:10:28.023] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-23 10:10:28.274] [info] [service.py:381] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): 
+  0: [1, 1]
+  1: [1]
+  2: [1]
+  3: [1, 1]
+  4: [256, 2662400]
+[2024-10-23 10:10:28.350] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-23 10:10:28.523] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-23 10:10:28.774] [info] [service.py:381] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): 
+  0: [1, 1]
+  1: [1]
+  2: [1]
+  3: [1, 1]
+  4: [256, 2662400]
+[2024-10-23 10:10:28.851] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-23 10:10:29.023] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-23 10:10:29.274] [info] [service.py:381] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): 
+  0: [1, 1]
+  1: [1]
+  2: [1]
+  3: [1, 1]
+  4: [256, 2662400]
+[2024-10-23 10:10:29.349] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-23 10:10:29.524] [info] [service.py:179] Waiting a bit longer to fill flight
+[2024-10-23 10:10:29.775] [info] [service.py:381] INVOKE ProgramFunction(decode_bs1$async: 0rrrrrrr_r): 
+  0: [1, 1]
+  1: [1]
+  2: [1]
+  3: [1, 1]
+  4: [256, 2662400]
+Memory access fault by GPU node-1 (Agent handle: 0x645d4ebf3380) on address 0x78224c494000. Reason: Page not present or supervisor privilege.
+Testing webapp...
+Health check status code: 200
+Prompt text:
+1 2 3 4 5
+Traceback (most recent call last):
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/urllib3/connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/urllib3/connection.py", line 507, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/http/client.py", line 1428, in getresponse
+    response.begin()
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/http/client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/http/client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/urllib3/util/retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/urllib3/util/util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/urllib3/connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/urllib3/connection.py", line 507, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/http/client.py", line 1428, in getresponse
+    response.begin()
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/http/client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/http/client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xidaren2/SHARK-Platform/shortfin/python/shortfin_apps/llm/client.py", line 64, in <module>
+    main()
+  File "/home/xidaren2/SHARK-Platform/shortfin/python/shortfin_apps/llm/client.py", line 55, in main
+    generate_ok = test_generate()
+                  ^^^^^^^^^^^^^^^
+  File "/home/xidaren2/SHARK-Platform/shortfin/python/shortfin_apps/llm/client.py", line 32, in test_generate
+    response = requests.post(f"{BASE_URL}/generate", headers=headers, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/requests/adapters.py", line 682, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+xshortfin/runit.sh: line 15: 3479592 Aborted                 (core dumped) python -m shortfin_apps.llm.server --tokenizer=/tmp/sharktank/llama/tokenizer.json --model_config=/tmp/sharktank/llama/edited_config.json --vmfb=/tmp/sharktank/llama/model.vmfb --parameters=/tmp/sharktank/llama/open-llama-3b-v2-f16.gguf --device=hip
