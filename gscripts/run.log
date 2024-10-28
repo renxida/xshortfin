@@ -1,0 +1,502 @@
++ set -e
++ bash export.sh
+Exporting with batch size 1,4
++ WD=/home/xidaren2/xshortfin/goldens/exported_llama_model
++ rm -rf /home/xidaren2/xshortfin/goldens/exported_llama_model
++ mkdir -p /home/xidaren2/xshortfin/goldens/exported_llama_model
++ huggingface-cli download --local-dir /home/xidaren2/xshortfin/goldens/exported_llama_model SlyEcho/open_llama_3b_v2_gguf open-llama-3b-v2-f16.gguf
+Consider using `hf_transfer` for faster downloads. This solution comes with some limitations. See https://huggingface.co/docs/huggingface_hub/hf_transfer for more details.
+/home/xidaren2/xshortfin/goldens/exported_llama_model/open-llama-3b-v2-f16.gguf
++ HUGGING_FACE_TOKENIZER=openlm-research/open_llama_3b_v2
++ python -
+You are using the default legacy behaviour of the <class 'transformers.models.llama.tokenization_llama.LlamaTokenizer'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
++ python -m sharktank.examples.export_paged_llm_v1 --gguf-file=/home/xidaren2/xshortfin/goldens/exported_llama_model/open-llama-3b-v2-f16.gguf --output-mlir=/home/xidaren2/xshortfin/goldens/exported_llama_model/model.mlir --output-config=/home/xidaren2/xshortfin/goldens/exported_llama_model/config.json --bs=1,4
+/home/xidaren2/SHARK-Platform/sharktank/sharktank/types/gguf_interop/base.py:84: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at ../torch/csrc/utils/tensor_numpy.cpp:206.)
+  data_tensor = torch.as_tensor(data.reshape(logical_shape))
+/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py:1364: UserWarning: ComplexHalf support is experimental and many operators don't support it yet. (Triggered internally at ../aten/src/ATen/EmptyTensor.cpp:44.)
+  empty = torch.empty_strided(
+Exporting prefill_bs1
+Exporting decode_bs1
+Exporting prefill_bs4
+Exporting decode_bs4
+GENERATED!
+Exporting
+Saving to '/home/xidaren2/xshortfin/goldens/exported_llama_model/model.mlir'
++ iree-compile /home/xidaren2/xshortfin/goldens/exported_llama_model/model.mlir --iree-hal-target-backends=rocm --iree-hip-target=gfx1100 -o /home/xidaren2/xshortfin/goldens/exported_llama_model/model.vmfb
++ cat
++ bash sharktank_dump.sh
+patching file /home/xidaren2/SHARK-Platform/sharktank/sharktank/examples/paged_llm_v1.py
+Patch applied successfully
+Backup saved as /home/xidaren2/SHARK-Platform/sharktank/sharktank/examples/paged_llm_v1.py.bak
+/home/xidaren2/SHARK-Platform/sharktank/sharktank/types/gguf_interop/base.py:84: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at ../torch/csrc/utils/tensor_numpy.cpp:206.)
+  data_tensor = torch.as_tensor(data.reshape(logical_shape))
+You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+:: Prompting:
+    b'1 2 3 4 5 '
+:: Prompt tokens: tensor([[29500, 29532, 29500, 29536, 29500, 29556, 29500, 29562, 29500, 29561,
+         29500,     0,     0,     0,     0,     0]])
+:: Invoke prefill:
+:: Prefill results:
+[[29570]]
+['6']
+:: Result tokens: [[29570, 29500]]
+  0(2, 12): 6 
+:: Result tokens: [[29570, 29500, 29574]]
+  0(3, 13): 6 7
+:: Result tokens: [[29570, 29500, 29574, 29500]]
+  0(4, 14): 6 7 
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571]]
+  0(5, 15): 6 7 8
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500]]
+  0(6, 16): 6 7 8 
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567]]
+  0(7, 17): 6 7 8 9
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500]]
+  0(8, 18): 6 7 8 9 
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532]]
+  0(9, 19): 6 7 8 9 1
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529]]
+  0(10, 20): 6 7 8 9 10
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500]]
+  0(11, 21): 6 7 8 9 10 
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532]]
+  0(12, 22): 6 7 8 9 10 1
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532]]
+  0(13, 23): 6 7 8 9 10 11
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500]]
+  0(14, 24): 6 7 8 9 10 11 
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532]]
+  0(15, 25): 6 7 8 9 10 11 1
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536]]
+  0(16, 26): 6 7 8 9 10 11 12
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500]]
+  0(17, 27): 6 7 8 9 10 11 12 
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500, 29532]]
+  0(18, 28): 6 7 8 9 10 11 12 1
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500, 29532, 29556]]
+  0(19, 29): 6 7 8 9 10 11 12 13
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500, 29532, 29556, 29500]]
+  0(20, 30): 6 7 8 9 10 11 12 13 
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500, 29532, 29556, 29500, 29532]]
+  0(21, 31): 6 7 8 9 10 11 12 13 1
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500, 29532, 29556, 29500, 29532, 29562]]
+  0(22, 32): 6 7 8 9 10 11 12 13 14
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500, 29532, 29556, 29500, 29532, 29562, 29500]]
+  0(23, 33): 6 7 8 9 10 11 12 13 14 
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500, 29532, 29556, 29500, 29532, 29562, 29500, 29532]]
+  0(24, 34): 6 7 8 9 10 11 12 13 14 1
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500, 29532, 29556, 29500, 29532, 29562, 29500, 29532, 29561]]
+  0(25, 35): 6 7 8 9 10 11 12 13 14 15
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500, 29532, 29556, 29500, 29532, 29562, 29500, 29532, 29561, 29500]]
+  0(26, 36): 6 7 8 9 10 11 12 13 14 15 
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500, 29532, 29556, 29500, 29532, 29562, 29500, 29532, 29561, 29500, 29532]]
+  0(27, 37): 6 7 8 9 10 11 12 13 14 15 1
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500, 29532, 29556, 29500, 29532, 29562, 29500, 29532, 29561, 29500, 29532, 29570]]
+  0(28, 38): 6 7 8 9 10 11 12 13 14 15 16
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500, 29532, 29556, 29500, 29532, 29562, 29500, 29532, 29561, 29500, 29532, 29570, 29500]]
+  0(29, 39): 6 7 8 9 10 11 12 13 14 15 16 
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500, 29532, 29556, 29500, 29532, 29562, 29500, 29532, 29561, 29500, 29532, 29570, 29500, 29532]]
+  0(30, 40): 6 7 8 9 10 11 12 13 14 15 16 1
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500, 29532, 29556, 29500, 29532, 29562, 29500, 29532, 29561, 29500, 29532, 29570, 29500, 29532, 29574]]
+  0(31, 41): 6 7 8 9 10 11 12 13 14 15 16 17
+:: Result tokens: [[29570, 29500, 29574, 29500, 29571, 29500, 29567, 29500, 29532, 29529, 29500, 29532, 29532, 29500, 29532, 29536, 29500, 29532, 29556, 29500, 29532, 29562, 29500, 29532, 29561, 29500, 29532, 29570, 29500, 29532, 29574, 29500]]
+  0(32, 42): 6 7 8 9 10 11 12 13 14 15 16 17 
++ bash iree_run.sh
+=== Running Prefill ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/prefill_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/prefill_inputs/cache_state_0.npy
+EXEC @prefill_bs1
+Comparing prefill outputs...
+Prefill comparison:
+Top-1 token different: True (IREE: 13, Shark: 29570)
+Number of different tokens in top-10: 18
+Logits mean relative difference: 40.92%
+Logits max relative difference: 366.63%
+Cross entropy (IREE→Shark): 6.512739
+Cross entropy (Shark→IREE): 18.424122
+Symmetric cross entropy: 12.468431
+Found 32 decode steps to process
+=== Running Decode Step 0 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation0_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation0_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 0...
+Decode step 0 comparison:
+Top-1 token different: False (IREE: 29500, Shark: 29500)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.02%
+Logits max relative difference: 0.07%
+Cross entropy (IREE→Shark): 0.986627
+Cross entropy (Shark→IREE): 0.989847
+Symmetric cross entropy: 0.988237
+=== Running Decode Step 1 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation1_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation1_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 1...
+Decode step 1 comparison:
+Top-1 token different: False (IREE: 29574, Shark: 29574)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.02%
+Logits max relative difference: 0.08%
+Cross entropy (IREE→Shark): 0.097699
+Cross entropy (Shark→IREE): 0.095872
+Symmetric cross entropy: 0.096785
+=== Running Decode Step 2 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation2_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation2_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 2...
+Decode step 2 comparison:
+Top-1 token different: False (IREE: 29500, Shark: 29500)
+Number of different tokens in top-10: 2
+Logits mean relative difference: 0.02%
+Logits max relative difference: 0.06%
+Cross entropy (IREE→Shark): 0.769367
+Cross entropy (Shark→IREE): 0.763872
+Symmetric cross entropy: 0.766620
+=== Running Decode Step 3 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation3_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation3_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 3...
+Decode step 3 comparison:
+Top-1 token different: False (IREE: 29571, Shark: 29571)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.10%
+Logits max relative difference: 0.27%
+Cross entropy (IREE→Shark): 0.088812
+Cross entropy (Shark→IREE): 0.088248
+Symmetric cross entropy: 0.088530
+=== Running Decode Step 4 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation4_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation4_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 4...
+Decode step 4 comparison:
+Top-1 token different: False (IREE: 29500, Shark: 29500)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.02%
+Logits max relative difference: 0.06%
+Cross entropy (IREE→Shark): 0.841961
+Cross entropy (Shark→IREE): 0.832360
+Symmetric cross entropy: 0.837160
+=== Running Decode Step 5 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation5_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation5_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 5...
+Decode step 5 comparison:
+Top-1 token different: False (IREE: 29567, Shark: 29567)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.03%
+Logits max relative difference: 0.09%
+Cross entropy (IREE→Shark): 0.084732
+Cross entropy (Shark→IREE): 0.083952
+Symmetric cross entropy: 0.084342
+=== Running Decode Step 6 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation6_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation6_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 6...
+Decode step 6 comparison:
+Top-1 token different: False (IREE: 29500, Shark: 29500)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.13%
+Logits max relative difference: 0.20%
+Cross entropy (IREE→Shark): 0.754347
+Cross entropy (Shark→IREE): 0.755670
+Symmetric cross entropy: 0.755008
+=== Running Decode Step 7 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation7_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation7_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 7...
+Decode step 7 comparison:
+Top-1 token different: False (IREE: 29532, Shark: 29532)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.06%
+Logits max relative difference: 0.20%
+Cross entropy (IREE→Shark): 0.321158
+Cross entropy (Shark→IREE): 0.319847
+Symmetric cross entropy: 0.320503
+=== Running Decode Step 8 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation8_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation8_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 8...
+Decode step 8 comparison:
+Top-1 token different: False (IREE: 29529, Shark: 29529)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.05%
+Logits max relative difference: 0.13%
+Cross entropy (IREE→Shark): 0.038590
+Cross entropy (Shark→IREE): 0.037456
+Symmetric cross entropy: 0.038023
+=== Running Decode Step 9 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation9_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation9_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 9...
+Decode step 9 comparison:
+Top-1 token different: False (IREE: 29500, Shark: 29500)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.05%
+Logits max relative difference: 0.13%
+Cross entropy (IREE→Shark): 2.193218
+Cross entropy (Shark→IREE): 2.198649
+Symmetric cross entropy: 2.195934
+=== Running Decode Step 10 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation10_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation10_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 10...
+Decode step 10 comparison:
+Top-1 token different: False (IREE: 29532, Shark: 29532)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.10%
+Logits max relative difference: 0.40%
+Cross entropy (IREE→Shark): 0.158586
+Cross entropy (Shark→IREE): 0.156845
+Symmetric cross entropy: 0.157715
+=== Running Decode Step 11 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation11_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation11_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 11...
+Decode step 11 comparison:
+Top-1 token different: False (IREE: 29532, Shark: 29532)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.02%
+Logits max relative difference: 0.08%
+Cross entropy (IREE→Shark): 0.083492
+Cross entropy (Shark→IREE): 0.081073
+Symmetric cross entropy: 0.082283
+=== Running Decode Step 12 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation12_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation12_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 12...
+Decode step 12 comparison:
+Top-1 token different: False (IREE: 29500, Shark: 29500)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.03%
+Logits max relative difference: 0.08%
+Cross entropy (IREE→Shark): 0.942947
+Cross entropy (Shark→IREE): 0.936087
+Symmetric cross entropy: 0.939517
+=== Running Decode Step 13 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation13_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation13_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 13...
+Decode step 13 comparison:
+Top-1 token different: False (IREE: 29532, Shark: 29532)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.02%
+Logits max relative difference: 0.09%
+Cross entropy (IREE→Shark): 0.037056
+Cross entropy (Shark→IREE): 0.036318
+Symmetric cross entropy: 0.036687
+=== Running Decode Step 14 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation14_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation14_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 14...
+Decode step 14 comparison:
+Top-1 token different: False (IREE: 29536, Shark: 29536)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.02%
+Logits max relative difference: 0.07%
+Cross entropy (IREE→Shark): 0.019390
+Cross entropy (Shark→IREE): 0.018562
+Symmetric cross entropy: 0.018976
+=== Running Decode Step 15 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation15_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation15_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 15...
+Decode step 15 comparison:
+Top-1 token different: False (IREE: 29500, Shark: 29500)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.02%
+Logits max relative difference: 0.07%
+Cross entropy (IREE→Shark): 0.996274
+Cross entropy (Shark→IREE): 0.984264
+Symmetric cross entropy: 0.990269
+=== Running Decode Step 16 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation16_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation16_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 16...
+Decode step 16 comparison:
+Top-1 token different: False (IREE: 29532, Shark: 29532)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.03%
+Logits max relative difference: 0.11%
+Cross entropy (IREE→Shark): 0.030516
+Cross entropy (Shark→IREE): 0.030056
+Symmetric cross entropy: 0.030286
+=== Running Decode Step 17 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation17_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation17_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 17...
+Decode step 17 comparison:
+Top-1 token different: False (IREE: 29556, Shark: 29556)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.02%
+Logits max relative difference: 0.07%
+Cross entropy (IREE→Shark): 0.033483
+Cross entropy (Shark→IREE): 0.031677
+Symmetric cross entropy: 0.032580
+=== Running Decode Step 18 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation18_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation18_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 18...
+Decode step 18 comparison:
+Top-1 token different: False (IREE: 29500, Shark: 29500)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.02%
+Logits max relative difference: 0.06%
+Cross entropy (IREE→Shark): 0.480032
+Cross entropy (Shark→IREE): 0.478639
+Symmetric cross entropy: 0.479335
+=== Running Decode Step 19 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation19_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation19_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 19...
+Decode step 19 comparison:
+Top-1 token different: False (IREE: 29532, Shark: 29532)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.04%
+Logits max relative difference: 0.12%
+Cross entropy (IREE→Shark): 0.016799
+Cross entropy (Shark→IREE): 0.015845
+Symmetric cross entropy: 0.016322
+=== Running Decode Step 20 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation20_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation20_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 20...
+Decode step 20 comparison:
+Top-1 token different: False (IREE: 29562, Shark: 29562)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.02%
+Logits max relative difference: 0.07%
+Cross entropy (IREE→Shark): 0.019140
+Cross entropy (Shark→IREE): 0.018534
+Symmetric cross entropy: 0.018837
+=== Running Decode Step 21 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation21_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation21_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 21...
+Decode step 21 comparison:
+Top-1 token different: False (IREE: 29500, Shark: 29500)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.02%
+Logits max relative difference: 0.06%
+Cross entropy (IREE→Shark): 0.377934
+Cross entropy (Shark→IREE): 0.382769
+Symmetric cross entropy: 0.380351
+=== Running Decode Step 22 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation22_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation22_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 22...
+Decode step 22 comparison:
+Top-1 token different: False (IREE: 29532, Shark: 29532)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.02%
+Logits max relative difference: 0.08%
+Cross entropy (IREE→Shark): 0.018349
+Cross entropy (Shark→IREE): 0.017752
+Symmetric cross entropy: 0.018050
+=== Running Decode Step 23 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation23_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation23_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 23...
+Decode step 23 comparison:
+Top-1 token different: False (IREE: 29561, Shark: 29561)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.02%
+Logits max relative difference: 0.07%
+Cross entropy (IREE→Shark): 0.015703
+Cross entropy (Shark→IREE): 0.014789
+Symmetric cross entropy: 0.015246
+=== Running Decode Step 24 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation24_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation24_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 24...
+Decode step 24 comparison:
+Top-1 token different: False (IREE: 29500, Shark: 29500)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.03%
+Logits max relative difference: 0.08%
+Cross entropy (IREE→Shark): 0.498640
+Cross entropy (Shark→IREE): 0.492199
+Symmetric cross entropy: 0.495420
+=== Running Decode Step 25 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation25_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation25_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 25...
+Decode step 25 comparison:
+Top-1 token different: False (IREE: 29532, Shark: 29532)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.11%
+Logits max relative difference: 0.29%
+Cross entropy (IREE→Shark): 0.019044
+Cross entropy (Shark→IREE): 0.018307
+Symmetric cross entropy: 0.018675
+=== Running Decode Step 26 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation26_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation26_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 26...
+Decode step 26 comparison:
+Top-1 token different: False (IREE: 29570, Shark: 29570)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.03%
+Logits max relative difference: 0.09%
+Cross entropy (IREE→Shark): 0.016468
+Cross entropy (Shark→IREE): 0.015273
+Symmetric cross entropy: 0.015870
+=== Running Decode Step 27 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation27_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation27_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 27...
+Decode step 27 comparison:
+Top-1 token different: False (IREE: 29500, Shark: 29500)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.03%
+Logits max relative difference: 0.09%
+Cross entropy (IREE→Shark): 0.491588
+Cross entropy (Shark→IREE): 0.494212
+Symmetric cross entropy: 0.492900
+=== Running Decode Step 28 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation28_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation28_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 28...
+Decode step 28 comparison:
+Top-1 token different: False (IREE: 29532, Shark: 29532)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.10%
+Logits max relative difference: 0.24%
+Cross entropy (IREE→Shark): 0.018524
+Cross entropy (Shark→IREE): 0.017692
+Symmetric cross entropy: 0.018108
+=== Running Decode Step 29 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation29_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation29_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 29...
+Decode step 29 comparison:
+Top-1 token different: False (IREE: 29574, Shark: 29574)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.01%
+Logits max relative difference: 0.06%
+Cross entropy (IREE→Shark): 0.013741
+Cross entropy (Shark→IREE): 0.013272
+Symmetric cross entropy: 0.013506
+=== Running Decode Step 30 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation30_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation30_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 30...
+Decode step 30 comparison:
+Top-1 token different: False (IREE: 29500, Shark: 29500)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.04%
+Logits max relative difference: 0.11%
+Cross entropy (IREE→Shark): 0.298676
+Cross entropy (Shark→IREE): 0.294877
+Symmetric cross entropy: 0.296777
+=== Running Decode Step 31 ===
+Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation31_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation31_inputs/cache_state_0.npy
+EXEC @decode_bs1
+Comparing outputs for step 31...
+Decode step 31 comparison:
+Top-1 token different: False (IREE: 29532, Shark: 29532)
+Number of different tokens in top-10: 0
+Logits mean relative difference: 0.12%
+Logits max relative difference: 0.31%
+Cross entropy (IREE→Shark): 0.012295
+Cross entropy (Shark→IREE): 0.012145
+Symmetric cross entropy: 0.012220
+=== Execution Complete ===
