@@ -10,7 +10,7 @@ Logits max relative difference: 18.54%
 Cross entropy (IREE→Shark): 7.904999
 Cross entropy (Shark→IREE): 5.630773
 Symmetric cross entropy: 6.767886
-Found 32 decode steps to process
+Found 27 decode steps to process
 === Running Decode Step 0 ===
 Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation0_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation0_inputs/cache_state_0.npy
 EXEC @decode_bs1
@@ -327,72 +327,9 @@ Symmetric cross entropy: 0.018675
 Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation26_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation26_inputs/cache_state_0.npy
 EXEC @decode_bs1
 Comparing outputs for step 26...
-Decode step 26 comparison:
-Top-1 token different: False (IREE: 29570, Shark: 29570)
-Number of different tokens in top-10: 0
-Logits mean relative difference: 0.03%
-Logits max relative difference: 0.09%
-Cross entropy (IREE→Shark): 0.016468
-Cross entropy (Shark→IREE): 0.015273
-Symmetric cross entropy: 0.015870
-=== Running Decode Step 27 ===
-Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation27_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation27_inputs/cache_state_0.npy
-EXEC @decode_bs1
-Comparing outputs for step 27...
-Decode step 27 comparison:
-Top-1 token different: False (IREE: 29500, Shark: 29500)
-Number of different tokens in top-10: 0
-Logits mean relative difference: 0.03%
-Logits max relative difference: 0.09%
-Cross entropy (IREE→Shark): 0.491588
-Cross entropy (Shark→IREE): 0.494212
-Symmetric cross entropy: 0.492900
-=== Running Decode Step 28 ===
-Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation28_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation28_inputs/cache_state_0.npy
-EXEC @decode_bs1
-Comparing outputs for step 28...
-Decode step 28 comparison:
-Top-1 token different: False (IREE: 29532, Shark: 29532)
-Number of different tokens in top-10: 0
-Logits mean relative difference: 0.10%
-Logits max relative difference: 0.24%
-Cross entropy (IREE→Shark): 0.018524
-Cross entropy (Shark→IREE): 0.017692
-Symmetric cross entropy: 0.018108
-=== Running Decode Step 29 ===
-Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation29_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation29_inputs/cache_state_0.npy
-EXEC @decode_bs1
-Comparing outputs for step 29...
-Decode step 29 comparison:
-Top-1 token different: False (IREE: 29574, Shark: 29574)
-Number of different tokens in top-10: 0
-Logits mean relative difference: 0.01%
-Logits max relative difference: 0.06%
-Cross entropy (IREE→Shark): 0.013741
-Cross entropy (Shark→IREE): 0.013272
-Symmetric cross entropy: 0.013506
-=== Running Decode Step 30 ===
-Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation30_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation30_inputs/cache_state_0.npy
-EXEC @decode_bs1
-Comparing outputs for step 30...
-Decode step 30 comparison:
-Top-1 token different: False (IREE: 29500, Shark: 29500)
-Number of different tokens in top-10: 0
-Logits mean relative difference: 0.04%
-Logits max relative difference: 0.11%
-Cross entropy (IREE→Shark): 0.298676
-Cross entropy (Shark→IREE): 0.294877
-Symmetric cross entropy: 0.296777
-=== Running Decode Step 31 ===
-Converting and copying cache state from /home/xidaren2/xshortfin/goldens/sharktank/decode_invocation31_inputs/cache_state_0.npy to /home/xidaren2/xshortfin/goldens/iree_run/decode_invocation31_inputs/cache_state_0.npy
-EXEC @decode_bs1
-Comparing outputs for step 31...
-Decode step 31 comparison:
-Top-1 token different: False (IREE: 29532, Shark: 29532)
-Number of different tokens in top-10: 0
-Logits mean relative difference: 0.12%
-Logits max relative difference: 0.31%
-Cross entropy (IREE→Shark): 0.012295
-Cross entropy (Shark→IREE): 0.012145
-Symmetric cross entropy: 0.012220
-=== Execution Complete ===
+Traceback (most recent call last):
+  File "<string>", line 32, in <module>
+  File "/home/xidaren2/miniforge3/envs/env1/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py", line 459, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/xidaren2/xshortfin/goldens/sharktank/decode_invocation26_outputs/logits.npy'

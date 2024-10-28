@@ -1,0 +1,113 @@
+--- paged_llm_v1.py	2024-10-28 11:36:06.994479632 -0700
++++ edited.py	2024-10-28 11:35:47.352479199 -0700
+@@ -1,3 +1,34 @@
++import os
++import numpy as np
++import torch
++
++
++def dump_tensors_as_numpy(tensors_dict: dict[str, torch.Tensor], dump_name: str):
++    """
++    Dumps tensors to numpy files in a specified directory structure.
++
++    Args:
++        tensors_dict: Dictionary mapping tensor names to torch.Tensors
++        dump_name: Name of the dump (will be part of the path)
++    """
++    base_path = f"/home/xidaren2/xshortfin/goldens/sharktank/{dump_name}"
++    # fail if base path already exists
++    if os.path.exists(base_path):
++        raise ValueError(f"Error dumping tensors: {base_path} already exists")
++    os.makedirs(base_path, exist_ok=True)
++
++    for tensor_name, tensor in tensors_dict.items():
++        if isinstance(tensor, (list, tuple)):
++            # Handle KV cache case - save each tensor in the cache separately
++            for idx, cache_tensor in enumerate(tensor):
++                if isinstance(cache_tensor, torch.Tensor):
++                    save_path = os.path.join(base_path, f"{tensor_name}_{idx}.npy")
++                    np.save(save_path, cache_tensor.detach().cpu().numpy())
++        elif isinstance(tensor, torch.Tensor):
++            save_path = os.path.join(base_path, f"{tensor_name}.npy")
++            np.save(save_path, tensor.detach().cpu().numpy())
++
++
+ # Copyright 2024 Advanced Micro Devices, Inc.
+ #
+ # Licensed under the Apache License v2.0 with LLVM Exceptions.
+@@ -170,6 +201,16 @@
+         trace_tensor("prefill.token_ids", self.token_ids)
+         trace_tensor("prefill.seq_block_ids", seq_block_ids_tensor)
+         trace_tensor("prefill.attention_mask", attention_mask)
++        dump_tensors_as_numpy(
++            {
++                "tokens": self.token_ids,  # [bs, batch_seq_len]
++                "seq_lens": self.seq_lens,  # [bs]
++                "seq_block_ids": seq_block_ids_tensor,  # [bs, num_blocks]
++                "cache_state": self.cache_state,  # List[Tensor]
++            },
++            "prefill_inputs",
++        )
++
+         logits = model.prefill(
+             self.token_ids,
+             attention_mask=attention_mask,
+@@ -177,6 +218,13 @@
+             cache_state=self.cache_state,
+         )
+ 
++        dump_tensors_as_numpy(
++            {
++                "logits": logits,  # [bs, seq_len, vocab_size]
++            },
++            "prefill_outputs",
++        )
++
+         # TODO: Generalize the sampling and don't make it swap on/off cpu.
+         # TODO: Normalize the output of extract_tokens_from_logits into
+         # tensor [bs, 1].
+@@ -204,6 +252,20 @@
+         trace_tensor("decode.start_positions", start_positions)
+         trace_tensor("decode.seq_block_ids", seq_block_ids_tensor)
+         trace_tensor("decode.attention_mask", decode_attention_mask)
++        # In the decode method of Batch class, right before the dump:
++        if not hasattr(self, "_decode_counter"):
++            self._decode_counter = 0
++        dump_tensors_as_numpy(
++            {
++                "tokens": self.next_tokens,  # [bs, 1]
++                "seq_lens": self.seq_lens,  # [bs]
++                "start_positions": start_positions,  # [bs]
++                "seq_block_ids": seq_block_ids_tensor,  # [bs, num_blocks]
++                "cache_state": self.cache_state,  # List[Tensor]
++            },
++            f"decode_invocation{self._decode_counter}_inputs",
++        )
++
+         logits = model.decode(
+             self.next_tokens,
+             attention_mask=decode_attention_mask,
+@@ -211,6 +273,16 @@
+             seq_block_ids=seq_block_ids_tensor,
+             cache_state=self.cache_state,
+         )
++        dump_tensors_as_numpy(
++            {
++                "logits": logits,  # [bs, 1, vocab_size]
++            },
++            f"decode_invocation{self._decode_counter}_outputs",
++        )
++        self._decode_counter += 1
++        if self._decode_counter == 32:
++            sys.exit(0)
++
+         trace_tensor("decode.logits", logits)
+         # TODO: Normalize the output of extract_tokens_from_logits into
+         # tensor [bs, 1].
+@@ -320,4 +392,4 @@
+ 
+ 
+ if __name__ == "__main__":
+-    main()
++    main()
+\ No newline at end of file
