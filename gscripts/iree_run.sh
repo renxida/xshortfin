@@ -20,7 +20,7 @@ rm -rf /home/xidaren2/xshortfin/goldens/iree_run
 mkdir -p /home/xidaren2/xshortfin/goldens/iree_run/prefill_inputs
 mkdir -p /home/xidaren2/xshortfin/goldens/iree_run/prefill_outputs
 
-EXPORTED_DIR=~/xshortfin/goldens/exported_llama_model
+EXPORTED_DIR=$HOME/xshortfin/goldens/exported_llama_model
 
 
 # Copy VMFB and config and parameters

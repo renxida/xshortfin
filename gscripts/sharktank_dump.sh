@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WD=~/xshortfin/goldens/exported_llama_model
+WD=$HOME/xshortfin/goldens/exported_llama_model
 
 
 # Define absolute paths

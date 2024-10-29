@@ -10,7 +10,7 @@ BS="1,4"
 echo "Exporting with batch size $BS"
 set -xeuo pipefail
 
-WD=~/xshortfin/goldens/exported_llama_model
+WD=$HOME/xshortfin/goldens/exported_llama_model
 rm -rf $WD
 
 mkdir -p $WD
